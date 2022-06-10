@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+    <head>
+        <meta charset="UTF-8">
+        <title>Cálculo del IMC </title>
+        <script>
+          function CalcularIMC(sexo, altura, peso) 
+          {
+            
+            altura = Math.round(altura) / 100;
+            peso = Math.round(peso);
+            
+            var indice = (peso / Math.pow(altura, 2));
+            var resultado = "";
+            
+            switch (sexo)
+            {
+              case "m":
+                if (indice < 20)
+                {
+                  resultado = "Peso inferior ao normal";
+                }
+                else if (indice >= 20 && indice < 24)
+                {
+                  resultado = "Peso Normal.";
+                }
+                else if (indice >= 24 && indice < 29)
+                {
+                  resultado = "Maior que o normal";
+                }
+                else
+                {
+                  resultado = "Obesidade";
+                }  
+                break
+              case "h":
+                if (indice < 21)
+                {
+                  resultado = "Peso inferior al normal.";
+                }
+                else if (indice >= 21 && indice < 25)
+                {
+                  resultado = "Peso Normal.";
+                }
+                else if (indice >= 25 && indice < 30)
+                {
+                  resultado = "Peso superior al normal.";
+                }
+                else
+                {
+                  resultado = "Obesidade";
+                }		   
+                break
+              default:
+                resultado = "Nao há como calcular.Isndicado h (homem) ou m (mulher).";
+            }
+            
+            return "Seu IMC é: " + indice.toFixed(2) + " e sua classificação é: " + resultado;
+          }
+     
+          
+          function MostrarResultadoIMC (sexo, altura, peso, indice)
+          {
+            var mensaje = "Você mede " + altura / 100 + " metros e pesa " + peso + " Kg. \n \n " + indice;
+             alert (mensagem);
+          }	
+     
+         
+          var sexo = prompt("Indique seu sexo,  'h' para homem ou 'm' para mulher:", "");
+          
+          var altura = parseInt(prompt("Indique sua altura em centímetros:", ""));
+          var peso = parseInt(prompt("Indique seu peso em KG:", ""));
+     
+         
+          var resultado = CalcularIMC(sexo, altura, peso);
+          MostrarResultadoIMC(sexo, altura, peso, resultado);   
+        </script>
+      </head>
+      <body> 
+      </body>
+    </html>
